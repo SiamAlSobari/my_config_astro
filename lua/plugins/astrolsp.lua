@@ -19,13 +19,17 @@ return {
           "typescript",
           "javascriptreact",
           "typescriptreact",
+          "css",
+          "html",
+          "vue",
         },
       },
       timeout_ms = 1000,
     },
     servers = {
       "rust_analyzer",
-      "tsserver", -- tambahkan untuk JS/TS/React
+      "tsserver", -- buat JS/TS/React
+      "tailwindcss", -- 👉 tambahin ini
     },
     config = {
       rust_analyzer = {
@@ -41,13 +45,28 @@ return {
       tsserver = {
         settings = {
           completions = {
-            completeFunctionCalls = true, -- auto lengkapi fn() langsung dengan ()
+            completeFunctionCalls = true,
           },
         },
         init_options = {
           preferences = {
-            importModuleSpecifierPreference = "relative", -- impor relatif
-            jsxAttributeCompletionStyle = "auto", -- buat React props completion
+            importModuleSpecifierPreference = "relative",
+            jsxAttributeCompletionStyle = "auto",
+          },
+        },
+      },
+      tailwindcss = {
+        filetypes = { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact", "vue" },
+        settings = {
+          tailwindCSS = {
+            lint = {
+              cssConflict = "warning",
+              invalidApply = "error",
+              invalidScreen = "error",
+              invalidVariant = "error",
+              invalidConfigPath = "error",
+            },
+            validate = true,
           },
         },
       },
@@ -55,6 +74,7 @@ return {
     handlers = {
       rust_analyzer = function(_, opts) require("lspconfig").rust_analyzer.setup(opts) end,
       tsserver = function(_, opts) require("lspconfig").tsserver.setup(opts) end,
+      tailwindcss = function(_, opts) require("lspconfig").tailwindcss.setup(opts) end, -- 👉 tambahin handler ini
     },
   },
 }
