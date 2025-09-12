@@ -30,6 +30,8 @@ return {
       "rust_analyzer",
       "tsserver", -- buat JS/TS/React
       "tailwindcss", -- 👉 tambahin ini
+      "intelephense",
+      "laravel_ls",
     },
     config = {
       rust_analyzer = {
@@ -70,11 +72,17 @@ return {
           },
         },
       },
+      laravel_ls = {
+        cmd = { "laravel-ls" }, -- pastikan laravel-ls ada di PATH
+        filetypes = { "php", "blade" },
+        root_dir = require("lspconfig").util.root_pattern "artisan",
+      },
     },
     handlers = {
       rust_analyzer = function(_, opts) require("lspconfig").rust_analyzer.setup(opts) end,
       tsserver = function(_, opts) require("lspconfig").tsserver.setup(opts) end,
       tailwindcss = function(_, opts) require("lspconfig").tailwindcss.setup(opts) end, -- 👉 tambahin handler ini
+      laravel_ls = function(_, opts) require("lspconfig").laravel_ls.setup(opts) end,
     },
   },
 }

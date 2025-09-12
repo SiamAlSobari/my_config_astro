@@ -14,6 +14,11 @@ if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
 end
 
 vim.opt.rtp:prepend(lazypath)
+-- Detect blade filetype
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.blade.php",
+  callback = function() vim.bo.filetype = "blade" end,
+})
 
 -- validate that lazy is available
 if not pcall(require, "lazy") then

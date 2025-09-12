@@ -6,7 +6,7 @@ if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 ---@type LazySpec
 return {
-
+  { "jwalton512/vim-blade" },
   -- == Examples of Adding Plugins ==
 
   "andweeb/presence.nvim",
