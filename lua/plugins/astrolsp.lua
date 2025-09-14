@@ -21,6 +21,7 @@ return {
           "typescriptreact",
           "css",
           "html",
+          "svelte",
           "vue",
         },
       },
@@ -28,10 +29,10 @@ return {
     },
     servers = {
       "rust_analyzer",
-      "tsserver", -- buat JS/TS/React
-      "tailwindcss", -- 👉 tambahin ini
+      "tsserver",
+      "tailwindcss",
       "intelephense",
-      "laravel_ls",
+      "svelte", -- 👉 tambahin ini
     },
     config = {
       rust_analyzer = {
@@ -58,7 +59,7 @@ return {
         },
       },
       tailwindcss = {
-        filetypes = { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact", "vue" },
+        filetypes = { "html", "css", "javascript", "typescript", "javascriptreact", "svelte", "typescriptreact", "vue" },
         settings = {
           tailwindCSS = {
             lint = {
@@ -72,17 +73,23 @@ return {
           },
         },
       },
-      laravel_ls = {
-        cmd = { "laravel-ls" }, -- pastikan laravel-ls ada di PATH
-        filetypes = { "php", "blade" },
-        root_dir = require("lspconfig").util.root_pattern "artisan",
+      svelte = {
+        settings = {
+          svelte = {
+            plugin = {
+              typescript = { enable = true },
+              html = { enable = true },
+              css = { enable = true },
+            },
+          },
+        },
       },
     },
     handlers = {
       rust_analyzer = function(_, opts) require("lspconfig").rust_analyzer.setup(opts) end,
       tsserver = function(_, opts) require("lspconfig").tsserver.setup(opts) end,
-      tailwindcss = function(_, opts) require("lspconfig").tailwindcss.setup(opts) end, -- 👉 tambahin handler ini
-      laravel_ls = function(_, opts) require("lspconfig").laravel_ls.setup(opts) end,
+      tailwindcss = function(_, opts) require("lspconfig").tailwindcss.setup(opts) end,
+      svelte = function(_, opts) require("lspconfig").svelte.setup(opts) end, -- 👉 tambahin handler ini
     },
   },
 }

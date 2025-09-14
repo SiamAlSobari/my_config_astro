@@ -11,7 +11,15 @@ return {
       "vim",
       "php",
       "blade",
+      "svelte",
+      "css",
+      "vue",
       -- add more arguments for adding more treesitter parsers
+      "tsx",
+    },
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = false,
     },
   },
 }
