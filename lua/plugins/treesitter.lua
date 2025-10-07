@@ -10,7 +10,6 @@ return {
       "lua",
       "vim",
       "php",
-      "blade",
       "svelte",
       "css",
       "vue",

@@ -11,20 +11,20 @@ return {
       semantic_tokens = true,
     },
     formatting = {
-      format_on_save = {
-        enabled = true,
-        allow_filetypes = {
-          "rust",
-          "javascript",
-          "typescript",
-          "javascriptreact",
-          "typescriptreact",
-          "css",
-          "html",
-          "svelte",
-          "vue",
-        },
-      },
+      -- format_on_save = {
+      --   allow_filetypes = {
+      --     "rust",
+      --     "javascript",
+      --     "typescript",
+      --     "javascriptreact",
+      --     "typescriptreact",
+      --     "css",
+      --     "html",
+      --     "svelte",
+      --     "vue",
+      --   },
+      -- },
+      format_on_save = false,
       timeout_ms = 1000,
     },
     servers = {
